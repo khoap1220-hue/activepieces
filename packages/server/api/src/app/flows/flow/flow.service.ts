@@ -346,7 +346,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
         ip,
         emitEvents = true,
         skipRequiredActionsCheck = false,
-        auditReason,
+        auditExplanation,
         editorSessionId = null,
     }: UpdateParams): Promise<PopulatedFlow> {
         const flowBeforeOperation = emitEvents
@@ -498,7 +498,7 @@ export const flowService = (log: FastifyBaseLogger) => ({
                 previousVersion: flowBeforeOperation.version,
                 previousStatus: flowBeforeOperation.status,
                 operation,
-                auditReason,
+                auditExplanation,
             })
         }
         return updatedFlow
@@ -1016,7 +1016,7 @@ type UpdateParams = EventEmissionParams & {
     platformId: PlatformId
     previousFlow?: PopulatedFlow
     skipRequiredActionsCheck?: boolean
-    auditReason?: string
+    auditExplanation?: string
     editorSessionId?: string | null
 }
 
